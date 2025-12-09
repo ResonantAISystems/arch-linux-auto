@@ -178,7 +178,7 @@ sudo /usr/local/sbin/create-main-user.sh
 
 Enter a username (e.g., `gordon`) and password.
 
-Then **log out** and log in as your new user.
+Then **log out** and log in as gordon.
 
 💡 From this point on, use your normal user, *not* root.
 
@@ -242,9 +242,9 @@ Expect ~2–6 tokens/sec depending on the model.
 
 ---
 
-# 🤖 **Integrating with Nova (your AI assistant)**
+# 🤖 **Integrating with Nova (Gordon’s ChatGPT-5.1 instance)**
 
-Nova can orchestrate:
+Nova (Gordon’s personal ChatGPT-5.1–class assistant) can orchestrate:
 
 * Local model calls
 * API fallbacks to cloud LLMs
