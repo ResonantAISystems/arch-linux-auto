@@ -85,7 +85,9 @@ Download the `.iso` file (typically named like `archlinux-YYYY.MM.DD-x86_64.iso`
    * **Partition Scheme:** GPT
    * **Target System:** UEFI (non-CSM)
 4. Click **Start**
-5. When done, eject the USB safely.
+5. When done, open the USB drive in Windows File Explorer
+6. Copy arch-auto-pinova-p1.sh into the root of the USB (same level as the ISO files)
+7. Safely eject the USB
 
 ---
 
@@ -107,12 +109,12 @@ You will land in the Arch Linux live shell.
 
 # 🔥 **Step 4 — Run the Auto-Installer**
 
-Once you see the `root@archiso` prompt, run:
+When you reach the root@archiso shell, the USB is automatically mounted under /run/archiso/bootmnt.
+The script will be located at: /run/archiso/bootmnt/arch-auto-pinova-p1.sh
 
+To run it:
 ```bash
-pacman -Sy --noconfirm git
-git clone https://github.com/ResonantAISystems/arch-linux-auto.git
-cd arch-linux-auto
+cd /run/archiso/bootmnt
 chmod +x arch-auto-pinova-p1.sh
 ./arch-auto-pinova-p1.sh
 ```
