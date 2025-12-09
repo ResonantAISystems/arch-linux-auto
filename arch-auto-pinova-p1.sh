@@ -49,7 +49,7 @@ ROOT="${DISK_REAL}${PARTPRE}3"
 read -rp "Hostname: " HN
 [[ -n "${HN:-}" ]] || die "Hostname required"
 
-# hardcoded TZ same as before
+# St. Louis / Central time
 TZPATH="/usr/share/zoneinfo/America/Chicago"
 
 # ================== carve & format ===================
@@ -154,28 +154,28 @@ install -Dm440 /dev/stdin /etc/sudoers.d/10-wheel <<'EOS'
 %wheel ALL=(ALL:ALL) ALL
 EOS
 
-# ----- post-install helper for main user creation -----
+# ----- post-install helper for main user creation (gordon) -----
 install -Dm755 /dev/stdin /usr/local/sbin/create-main-user.sh <<'EOS'
 #!/usr/bin/env bash
 set -euo pipefail
 
+USER="gordon"
+
 echo
 echo "=== Create main user account ==="
-read -rp "New username: " USER
-[[ -n "\${USER:-}" ]] || { echo "Username required"; exit 1; }
 
-if id "\$USER" &>/dev/null; then
-  echo "User '\$USER' already exists."
-  exit 1
+if id "$USER" &>/dev/null; then
+  echo "User '$USER' already exists, nothing to do."
+  exit 0
 fi
 
-useradd -m -G wheel,audio,video,storage -s /bin/bash "\$USER"
-echo "Set password for '\$USER':"
-passwd "\$USER"
+useradd -m -G wheel,audio,video,storage -s /bin/bash "$USER"
+echo "Set password for '$USER':"
+passwd "$USER"
 
 echo
-echo "User '\$USER' created and added to: wheel,audio,video,storage."
-echo "You can now log out and log back in as '\$USER'."
+echo "User '$USER' created and added to: wheel,audio,video,storage."
+echo "You can now log out and log back in as '$USER'."
 EOS
 
 # ----- README for Gordon under /root -----
@@ -201,10 +201,11 @@ Post-install steps (Pinova P1 auto installer)
 4) Create your main user account:
    - Once logged in as root (XFCE desktop or TTY), run:
        sudo /usr/local/sbin/create-main-user.sh
-   - Follow the prompts to create your normal (non-root) user.
+   - This will create the user account 'gordon' and prompt you
+     to set its password.
 
 5) After that:
-   - Log out and log back in as your new user.
+   - Log out and log back in as user 'gordon'.
    - Use this user for daily work.
    - Root should only be used for administration.
 
@@ -231,4 +232,4 @@ echo
 echo "After reboot:"
 echo "  - Log in as root at LightDM"
 echo "  - Run:  sudo /usr/local/sbin/create-main-user.sh"
-echo "  - Then log out and back in as the new user."
+echo "  - Then log out and back in as user 'gordon'."
