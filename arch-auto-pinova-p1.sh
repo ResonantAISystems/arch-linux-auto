@@ -50,7 +50,7 @@ read -rp "Hostname: " HN
 [[ -n "${HN:-}" ]] || die "Hostname required"
 
 # hardcoded TZ same as before
-TZPATH="/usr/share/zoneinfo/America/Los_Angeles"
+TZPATH="/usr/share/zoneinfo/America/Chicago"
 
 # ================== carve & format ===================
 say "Wiping and partitioning $DISK_REAL (ESP=512MiB, swap=8GiB, root=rest)"
@@ -90,7 +90,7 @@ say "Configuring inside chroot"
 arch-chroot /mnt /bin/bash -e <<CHROOT
 set -euo pipefail
 
-TZPATH="/usr/share/zoneinfo/America/Chicago"
+TZPATH="$TZPATH"
 HN="$HN"
 ROOT_PART="$ROOT"
 
@@ -136,7 +136,8 @@ pacman -Syu --noconfirm \
   lightdm lightdm-gtk-greeter \
   network-manager-applet \
   bluez bluez-utils \
-  pipewire pipewire-alsa pipewire-pulse wireplumber
+  pipewire pipewire-alsa pipewire-pulse wireplumber \
+  sudo
 
 # ----- lightdm greeter -----
 install -D /dev/null /etc/lightdm/lightdm.conf.d/10-gtk-greeter.conf
