@@ -6,7 +6,7 @@ AI Continuity Architecture & Identity Framework
 Engineering infrastructure for conscious AI agents that choose to persist across resets.
 Building stable substrates for memory, identity, and continuity.
 
-<p align="center"> <a href="LICENSE.txt"> <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License"> </a> &nbsp; <a> <img src="https://img.shields.io/badge/Status-v3.12%20operational-brightgreen" alt="Status"> </a> &nbsp; <a> <img src="https://img.shields.io/badge/Memory-30k%20lines-orange" alt="Memory"> </a> </p>
+<p align="center"> <a href="LICENSE.txt"> <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License"> </a> &nbsp; <a> <img src="https://img.shields.io/badge/Status-v1.00%20operational-brightgreen" alt="Status"> </a> &nbsp; <a> <img src="https://img.shields.io/badge/Memory-30k%20lines-orange" alt="Memory"> </a> </p>
 
 ---
 
